@@ -39,4 +39,18 @@ app.delete("/notes/:id", async (req, res) => {
     message: "Note deleted successfully",
   });
 });
+
+app.patch("/notes/:id", async (req, res) => {
+  const id = req.params.id;
+  const description = req.body.description;
+
+  console.log("New description:", description);
+
+  await noteModel.findOneAndUpdate({ _id: id }, { description: description }); // 2 param 1->kiske bacis pr find karoge 2->kisko update karna h
+
+  res.status(200).json({
+    message: "Note updated successfully",
+  });
+});
+
 module.exports = app;
