@@ -19,7 +19,10 @@ app.post("/notes", async (req, res) => {
 
 app.get("/notes", async (req, res) => {
   const notes = await noteModel.find(); //[]
-
+    /*
+    find() => [{},{}] or []
+    findOne() => {} or null
+    */
   res.status(200).json({
     message: "Notes fetched successfully",
     notes: notes,
